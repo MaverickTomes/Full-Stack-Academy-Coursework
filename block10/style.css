@@ -1,0 +1,41 @@
+/* Grid example below:
+
+form{
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px
+}
+
+#submit-btn{
+  grid-column: span 2;
+  width: 100px;
+  justify-self: center;
+}
+*/ grid example
+
+/* flexbox example below */
+form{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form-item{
+  background-color: lightgoldenrodyellow;
+  padding: 5px;
+}
+
+input{
+  background-color: lightgreen;
+}
+
+form label:nth-child(3) {
+  color: crimson;
+}
+/*
+#blue-box{
+  position: fixed;
+  background-color: blue;
+  height: 150px;
+  width: 150px;
+  z-index: -1;
+}*/

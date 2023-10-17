@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block 10 Workshop Picasso</title>
+  <link rel="stylesheet" href="workshop.css">
+
+<body>
+<!-- <div id="rectangle"></div> 
+  <div class="container">
+
+  </div>
+ <div id="rectangle"></div> 
+  I don't understand how to creat shapes/orginze and put them in a grid/flex -->
+
+
+  <h1>This Form Is Collecting Info For A Survey</h1>
+  <form action="workshipsubmit.html"> <!--action of the form/submission page after submitting forms-->
+    <label for="name"> Name:</label>
+    <input type="text" id="name" placeholder="John" required>
+    <input type="text" id="last name" placeholder="Smith" required>
+    <label for="phone number">Phone Number:</label>
+    <input type="number" id="phone number" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" required>
+    <select id="contact">
+      <option value="" disabled selected hidden>Best Way To Contact:</option>
+      <option value="ca">Home Phone</option>
+      <option value="mx">Email</option>
+      <option value="us">Leave Me Alone</option>
+    </select>
+    <fieldset>
+      <legend>Do you agree to the terms?</legend> 
+      <!--saw the legend and fieldset come up on w3 schools. Kind of  understand now but it took some trial and error -->
+      <label><input type="radio" name="radio" value="yes" /> Yes</label>
+      <label><input type="radio" name="radio" value="no" /> No</label>
+    </fieldset>
+
+    <button type="submit" id="submit-btn">Submit</button>
+
+    
+</body>
+</html>

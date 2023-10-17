@@ -1,0 +1,47 @@
+
+.rectangle{
+  display: flex;
+  flex-wrap: wrap;
+}
+/* I'm sorry I cannot figure out how to had shapes and put them in
+either a flex box or a grid. When I try and target classes, not matter what I add
+it only ads one shape. I also rage deleted some of it but will not do that next time */
+#rectangle{
+  position: fixed;
+  background-color: cyan;
+  height: 200px;
+  width: 400px;
+}
+body{
+  background-color: lightgrey;
+}
+h1{
+  color: black;
+  font-family: fantasy;
+  font-style: italic;
+
+}
+form{
+  display: grid;
+  grid-template-columns: 100px 100px 1;
+  gap: 5px;
+}
+
+input{
+  background-color: lightskyblue;
+}
+
+#email{
+  background-color: lightskyblue;
+}
+
+#contact{
+  color: rgb(57, 5, 242);
+  font-family: fantasy;
+  background-color: lightcoral;
+}
+#submit-btn{
+  color: rgb(57, 5, 242);
+  font-family: fantasy;
+  background-color: lightcoral;
+}
