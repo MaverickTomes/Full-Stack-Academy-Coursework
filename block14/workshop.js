@@ -68,7 +68,7 @@ function getMean(numbers) {
  * @returns {number} the smallest of the numbers
  */
 function getMin(numbers) {
-  let min =(numbers => 0; )
+  let min =numbers => 0;
 }
 //*********************************HELP************************************* */
 //I thought I had this figured out but I'm really stuck on this. I don't know where
