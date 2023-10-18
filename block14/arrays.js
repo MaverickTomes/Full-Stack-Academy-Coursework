@@ -16,6 +16,8 @@ vegetables.push("tomato")
 
 console.log(vegetables)
 
-//could not finish exmaples due to terminal crash. Will pull from repo about arrays
+vegetables.pop() //remove from the end
+
+console.log("after POP", vegetables)
 
 
