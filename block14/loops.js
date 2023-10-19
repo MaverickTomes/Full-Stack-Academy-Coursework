@@ -2,7 +2,7 @@
 
 //For Loop has 3 pieces (initialization; condition; afterthought) {....}
 
-for(let countDown = 10; countDown > 0; countDown = countDown -= 2) {
+for(let countDown = 10; countDown > 0; countDown -= 10 ) {
   console.log("T -", countDown)
 }
 
