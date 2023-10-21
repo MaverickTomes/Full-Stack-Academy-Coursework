@@ -1,0 +1,40 @@
+/*
+
+strawberry: 1
+vanilla: 3
+coffee: 2
+
+don't forget to link to a html file
+*/
+
+let inputStr = prompt("Please enter some froyo flavers, separated by commas")
+
+console.log(inputStr); //when this prints it a string data type
+console.log(inputStr.split(",")); //splits the string after every comma into an array
+                          //^^
+
+function createOrderObject(str) {
+  //split the string into an array of flavors
+  const flavorsArray =str.split(",");
+
+  const order = {}
+
+
+  //let unknown = "vanilla"
+  //order[unknown] = 1
+
+  for  (let index = 0; index < flavorsArray.lenght; index++) {
+    let newFlavor =flavorsArray[index].trim() //remove spaces
+  
+
+  if (newFlavor in order) //order exists
+    order[newFlavor]++
+  else {
+    order[newFlavor] = 1
+  }
+}
+  return order
+}
+
+let froyoOrder = createOrderObject(inputStr)
+console.table() //missed what to put in this.
