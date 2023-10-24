@@ -29,9 +29,18 @@ class Numbers {
   }
   evens() {
     //return the even numbers in data
+    let evenNums = []
+    for ( let i = 0; i < this.data.length; i++) {
+      if (this.data[i] % !2 === 1) {
+        evenNums.push(this.data[i])
+      }
+    }
+    return evenNums
   }
+  
   sum() {
     //return the sum of the numbers
+    return this.data.reduce((total, current) => total + current)
   }
   product() { //multipling the numbers out
     //return the product of the numbers
@@ -45,9 +54,20 @@ class Numbers {
   }
   greaterThan(target) {
     //return the numbers greater than the target
+    this.data.filter((num) => num > target) // only keeps the ones larger <--- did not know this one 
   }
+  
   howMany(target) {
     //return the count of a given number
+
+    let count = 0
+    this.data.forEach((number) => {
+      if (number == target) {
+        count += 1
+      }
+    })
+
+    return count
   }
 }
 
