@@ -20,3 +20,28 @@ const events = document.querySelector("#events");
 
 const addEventsForm = document.querySelector("#events");
 addEventsForm.addEventListener("submit", events);
+
+async function render() {
+  await getEvents();
+  renderEvents();
+}
+render();
+
+function renderArtists() {
+  if (!state.artists.length) {
+    artistList.innerHTML = "<li>No artists.</li>";
+    return;
+  }
+
+  const eventNames = state.event.map((events) => {
+    const li = document.createElement("li");
+    li.innerHTML = `
+      <h2>${artist.name}</h2>
+      <img src="${artist.imageUrl}" alt="${artist.name}" />
+      <p>${artist.description}</p>
+    `;
+    return li;
+  });
+
+  artistList.replaceChildren(...artistCards);
+}
