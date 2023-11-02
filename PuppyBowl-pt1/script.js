@@ -1,34 +1,75 @@
+console.log("------connected!-------");
+
 const playerContainer = document.getElementById('all-players-container');
 const newPlayerFormContainer = document.getElementById('new-player-form');
 
 // Add your cohort name to the cohortName variable below, replacing the 'COHORT-NAME' placeholder
-const cohortName = 'YOUR COHORT NAME HERE';
+const cohortName = "2309-FTB-ET-WEB-FY";
 // Use the APIURL variable for fetch requests
 const APIURL = `https://fsa-puppy-bowl.herokuapp.com/api/${cohortName}/`;
 
+const state = {
+    //teams, [],
+    players: [],
+    singlePlayer: [],
+
+};
 /**
  * It fetches all players from the API and returns them
  * @returns An array of objects.
  */
+
+/*const fetchAllTeams= async () => {
+    try {
+        const response = await fetch(APIURL + "/teams");
+        const json = await response.json();
+        state.teams = json.data;
+    } catch (err) {
+        console.error('Uh oh, trouble fetching teams!', err);
+    }
+    return jason.data.teams
+}; not needed but added just for fun.
+*/
+
 const fetchAllPlayers = async () => {
     try {
-
+        const response = await fetch(APIURL + "/players");
+        const json = await response.json();
+        state.teams = json.data;
+        console.log(json.data);
+        return json.data.players;
     } catch (err) {
         console.error('Uh oh, trouble fetching players!', err);
     }
+        
+    
 };
 
 const fetchSinglePlayer = async (playerId) => {
     try {
-
+        const response = await fetch(APIURL + "/players/" + singlePlayer);
+        const json = await response.json();
+        state.singlePlayer = json.data;
+        return json.data.singlePlayer;
+        
     } catch (err) {
         console.error(`Oh no, trouble fetching player #${playerId}!`, err);
     }
 };
 
-const addNewPlayer = async (playerObj) => {
-    try {
+        
 
+const addNewPlayer = async (playerObj) => { //call and render in all players
+    try {
+        const response = await fetch(APIURL + "/players",{
+            method: "POST",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify(playerObj)
+              //name: addArtistForm.name.value,
+              //imageUrl: addArtistForm.imageUrl.value,
+              //description: addArtistForm.description.value,
+            });
+          
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
@@ -36,7 +77,7 @@ const addNewPlayer = async (playerObj) => {
 
 const removePlayer = async (playerId) => {
     try {
-
+//call in the renderallplayers
     } catch (err) {
         console.error(
             `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -67,7 +108,21 @@ const removePlayer = async (playerId) => {
  */
 const renderAllPlayers = (playerList) => {
     try {
-        
+        const playerListContainer = document.getElementById("all-players-container");
+        playerListContainer.innerHTML = " "
+        playerList.forEach((player) => {
+            const article = document.createElement("article");
+            article.innerHTML = 
+            `<h3>${player.id}</h3>
+             <h3>${player.name}</h3>
+             <span>${player.breed}</span>
+             <span>${player.status}</span>
+             <img src="https://assets-global.website-files.com/61ef5f7de9f2f3e172aba763/62834fbae5cc594999f7c307_chocolatelabradorsflorida.jpeg" alt="puppy" img width="100px">
+            `
+
+             playerListContainer.appendChild(article);
+        });
+
     } catch (err) {
         console.error('Uh oh, trouble rendering players!', err);
     }

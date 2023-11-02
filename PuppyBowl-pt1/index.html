@@ -6,22 +6,56 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- import JavaScript -->
+  <!-- import JavaScript (DONE!) both tested and working in console-->
   <script defer src="script.js"></script>
 
-  <!-- import CSS -->
+  <!-- import CSS (DONE!) -->
   <link rel="stylesheet" href="styles.css">
 
   <title>PuppyBowl</title>
 </head>
 
 <body>
+  <h1>Welcome To The Puppybowl!</h1>
+    <br>
+  <h2>Check Out The Team Rosters Below!</h2>
+  <br>
+  <br>
+  <h2>Join A Team With Your Puppy!</h2>
 
-  <!-- form to add new players -->
-  <div id="new-player-form"></div>
+  <!-- form to add new players        mostly complete-->
+  <div id="new-player-form">
+    <form id="new-players">
+      <Label>ID:</Label>
+      <input type="number" name="puppy-id" id="puppy-id" placeholder="Puppy Id Number" required>
+      <label>Name:</label>
+      <input type="name" placeholder="Puppy's Name" required>
+      <label>Status:</label>
+      <input type="text" id="status" placeholder="field">
+      <label>Breed:</label>
+      <input type="breed" placeholder="German Sheppard" required>
+      <label>Picture of your dog:</label>
+      <input type="image" src="#" alt="dog-picture">
+      <br>
+      Do you agree to our terms?<input type="checkbox"name="agree" id="terms" required>
+      <button type="button">Add Puppy</button>
+    </form>
+  </div>
 
   <!-- container for all players -->
-  <div id="all-players-container"></div>
+      <br>
+      <br>
+      <br>
+    <h2>List of All Players:</h2>
+        <br>
+    <div id="all-players-container">
+      <!--still need to add the teams inside of this-->
+
+
+    </div>
+
+
+  </div>
 
 </body>
 
