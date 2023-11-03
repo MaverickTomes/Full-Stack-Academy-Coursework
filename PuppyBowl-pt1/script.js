@@ -88,6 +88,7 @@ const removePlayer = async (playerId) => {
     try {
         const response = await fetch(APIURL + `/players/${playerId}`, {
             method: "DELETE"
+            
         })
     } catch (err) {
         console.error(
@@ -122,28 +123,36 @@ const removePlayer = async (playerId) => {
 
 
 const renderAllPlayers = (playerList) => {
+    
     try {
         const playerListContainer = document.getElementById("all-players-container");
         playerListContainer.innerHTML = " "
         playerList.forEach((player) => {
-            const article = document.createElement("article");
-            console.log(player);
-            article.innerHTML = 
-            `<h3>${player.id}</h3>
-             <img src="${player.imageUrl}"/> 
-            <button id="player-details">See Details</button>
-            <button class="delete-button">Delete Player</button>
-            `
-
-            
-//resize imgages in css
-             playerListContainer.appendChild(article);
-        });
+            const playerCards = document.createElement("div");
+            const deleteBtn = document.createElement("button");
+            deleteBtn.innerText ="delete"
+            deleteBtn.addEventListener("click", async() => {
+                removePlayer(player.id);
+            });
+                const article = document.createElement("article");
+                console.log(player);
+                article.innerHTML = 
+                `<h3>${player.id}</h3>
+                <img src="${player.imageUrl}"/> 
+                <button id="player-details">See Details</button>
+                `
+                playerListContainer.appendChild(article);   
+                playerCards.appendChild(deleteBtn)  
+                playerListContainer.appendChild(playerCards);  
+            /*
+        article.append(deleteButton);
         const deleteButton = playerListContainer.querySelector(".delete-button");
-            deleteButton.addEventListener("click", async () =>{
-                await removePlayer(player.id); //this is the issue in my code
-                
-            })
+        deleteButton.addEventListener("click", async () =>{
+        await removePlayer(player.id); 
+        */
+            
+            });    
+        
     } catch (err) {
         console.error('Uh oh, trouble rendering players!', err);
     }
