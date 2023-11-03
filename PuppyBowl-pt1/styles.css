@@ -3,3 +3,16 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+img{
+display: flex;
+align-content: flex-end;
+width: 100px;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  
+  
+}

@@ -47,9 +47,10 @@ const fetchAllPlayers = async () => {
 
 const fetchSinglePlayer = async (playerId) => {
     try {
-        const response = await fetch(APIURL + "/players/" + singlePlayer);
+        const response = await fetch(APIURL + "/players");
         const json = await response.json();
         state.singlePlayer = json.data;
+        console.log(state.singlePlayer);
         return json.data.singlePlayer;
         
     } catch (err) {
@@ -57,27 +58,37 @@ const fetchSinglePlayer = async (playerId) => {
     }
 };
 
-        
-
-const addNewPlayer = async (playerObj) => { //call and render in all players
+    
+const addPlayerForm = document.querySelector("#new-players");
+const addNewPlayer = async (event) => { 
+    event.preventDefault();
     try {
+     
         const response = await fetch(APIURL + "/players",{
             method: "POST",
             headers: { "Content-Type": "application/json", },
-            body: JSON.stringify(playerObj)
-              //name: addArtistForm.name.value,
-              //imageUrl: addArtistForm.imageUrl.value,
-              //description: addArtistForm.description.value,
-            });
-          
+            body: JSON.stringify({
+              name: addPlayerForm.name.value,
+              
+              breed: addPlayerForm.breed.value,
+              
+
+            }),
+        })
+        console.log(await response.json())
+        renderAllPlayers();
     } catch (err) {
         console.error('Oops, something went wrong with adding that player!', err);
     }
 };
 
+    addPlayerForm.addEventListener("submit", addNewPlayer);
+
 const removePlayer = async (playerId) => {
     try {
-//call in the renderallplayers
+        const response = await fetch(APIURL + `/players/${playerId}`, {
+            method: "DELETE"
+        })
     } catch (err) {
         console.error(
             `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -106,29 +117,57 @@ const removePlayer = async (playerId) => {
  * @param playerList - an array of player objects
  * @returns the playerContainerHTML variable.
  */
+
+
+
+
 const renderAllPlayers = (playerList) => {
     try {
         const playerListContainer = document.getElementById("all-players-container");
         playerListContainer.innerHTML = " "
         playerList.forEach((player) => {
             const article = document.createElement("article");
+            console.log(player);
             article.innerHTML = 
             `<h3>${player.id}</h3>
-             <h3>${player.name}</h3>
-             <span>${player.breed}</span>
-             <span>${player.status}</span>
-             <img src="https://assets-global.website-files.com/61ef5f7de9f2f3e172aba763/62834fbae5cc594999f7c307_chocolatelabradorsflorida.jpeg" alt="puppy" img width="100px">
+             <img src="${player.imageUrl}"/> 
+            <button id="player-details">See Details</button>
+            <button class="delete-button">Delete Player</button>
             `
 
+            
+//resize imgages in css
              playerListContainer.appendChild(article);
         });
-
+        const deleteButton = playerListContainer.querySelector(".delete-button");
+            deleteButton.addEventListener("click", async () =>{
+                await removePlayer(player.id); //this is the issue in my code
+                
+            })
     } catch (err) {
         console.error('Uh oh, trouble rendering players!', err);
     }
 };
+/*
+<h3>${player.name}</h3>
+<span>${player.breed}</span>
+<span>${player.status}</span> */
+/*
+const renderSinglePlayer = (onePlayer) => {
+    const stats = getElementById("single-player-stats");
+    stats.innerHTML = " "
+    const article2 = document.createElement("article");
 
-
+    article2.innerHTML = `<h3>${player.id}</h3>
+        <h3>${player.name}</h3>
+        <span>${player.breed}</span>
+        <span>${player.status}</span>
+        <img src="${player.imageUrl}"/>
+        `;
+    stats.appendChild(article2);      
+}
+    stats.addEventListener("player-details", renderSinglePlayer);
+*/
 /**
  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
  * fetches all players from the database, and renders them to the DOM.
@@ -144,7 +183,7 @@ const renderNewPlayerForm = () => {
 const init = async () => {
     const players = await fetchAllPlayers();
     renderAllPlayers(players);
-
+    
     renderNewPlayerForm();
 }
 

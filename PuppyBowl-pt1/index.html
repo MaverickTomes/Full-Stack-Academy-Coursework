@@ -18,27 +18,25 @@
 <body>
   <h1>Welcome To The Puppybowl!</h1>
     <br>
-  <h2>Check Out The Team Rosters Below!</h2>
+  <h2>Check Out The List of Players Below!</h2>
   <br>
   <br>
-  <h2>Join A Team With Your Puppy!</h2>
-
+  <h2>Join With Your Puppy!</h2>
+  <br>
   <!-- form to add new players        mostly complete-->
   <div id="new-player-form">
     <form id="new-players">
-      <Label>ID:</Label>
-      <input type="number" name="puppy-id" id="puppy-id" placeholder="Puppy Id Number" required>
       <label>Name:</label>
-      <input type="name" placeholder="Puppy's Name" required>
+      <input type="text" name="name" placeholder="Puppy's Name" required>
       <label>Status:</label>
-      <input type="text" id="status" placeholder="field">
+      <input type="text" name="status" placeholder="field">
       <label>Breed:</label>
-      <input type="breed" placeholder="German Sheppard" required>
+      <input type="text" name="breed" placeholder="German Sheppard" required>
       <label>Picture of your dog:</label>
-      <input type="image" src="#" alt="dog-picture">
+      <input type="text" name="imageUrl">
       <br>
       Do you agree to our terms?<input type="checkbox"name="agree" id="terms" required>
-      <button type="button">Add Puppy</button>
+      <button type="submit">Add Puppy</button>
     </form>
   </div>
 
@@ -48,13 +46,15 @@
       <br>
     <h2>List of All Players:</h2>
         <br>
+<section>
     <div id="all-players-container">
       <!--still need to add the teams inside of this-->
 
 
     </div>
-
-
+    
+    <article id="single-player-stats"> Blah lksdjfkljaskldjfl</article>
+</section>
   </div>
 
 </body>
