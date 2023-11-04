@@ -69,9 +69,8 @@ const addNewPlayer = async (event) => {
             headers: { "Content-Type": "application/json", },
             body: JSON.stringify({
               name: addPlayerForm.name.value,
-              
-              breed: addPlayerForm.breed.value,
-              
+              status: addPlayerForm.status.value,
+              breed: addPlayerForm.breed.value, 
 
             }),
         })
@@ -98,6 +97,19 @@ const removePlayer = async (playerId) => {
     }
 };
 
+/*
+function singlePlayerDetails (playersid) {
+
+    
+            //const playerDetails = document.createElement("div");
+            //const seeDetails = document.createElement("button");
+            //seeDetails.innerText = "See Player Details"
+            seeDetails.addEventListener("click", async() =>{
+                
+            })
+
+};
+*/
 /**
  * It takes an array of player objects, loops through them, and creates a string of HTML for each
  * player, then adds that string to a larger string of HTML that represents all the players. 
@@ -125,58 +137,57 @@ const removePlayer = async (playerId) => {
 const renderAllPlayers = (playerList) => {
     
     try {
+        const seeDetailsContainer= document.getElementById("single-player-stats") //this is the article inside the div that flexboxed
+        //to the other side --->>see other screenshot
         const playerListContainer = document.getElementById("all-players-container");
         playerListContainer.innerHTML = " "
         playerList.forEach((player) => {
             const playerCards = document.createElement("div");
             const deleteBtn = document.createElement("button");
+            const seeDetailsbtn = document.createElement("button");
+            seeDetailsbtn.innerText = "See Details"
             deleteBtn.innerText ="delete"
+            seeDetailsbtn.addEventListener("click", async() => {
+                if (playerCards.style.display === "div") {
+                    playerCards.style.display = "all-players-containter";
+                } else {
+                    playerCards.innerHTML = 
+                    `<h3>${player.id}</h3>
+                     <h3>${player.name}</h3>
+                     <h3>${player.status}</h3>
+                     `
+                    playerCards.appendChild(seeDetailsbtn);
+                    playerCards.appendChild(deleteBtn);
+                };
+            });
             deleteBtn.addEventListener("click", async() => {
                 removePlayer(player.id);
             });
                 const article = document.createElement("article");
                 console.log(player);
                 article.innerHTML = 
-                `<h3>${player.id}</h3>
-                <img src="${player.imageUrl}"/> 
-                <button id="player-details">See Details</button>
                 `
+                 
+                <img src="${player.imageUrl}"/> 
+                
+                `
+                //<button id="player-details">See Details</button>
                 playerListContainer.appendChild(article);   
-                playerCards.appendChild(deleteBtn)  
+                playerCards.appendChild(deleteBtn);  
                 playerListContainer.appendChild(playerCards);  
-            /*
-        article.append(deleteButton);
-        const deleteButton = playerListContainer.querySelector(".delete-button");
-        deleteButton.addEventListener("click", async () =>{
-        await removePlayer(player.id); 
-        */
-            
+                seeDetailsContainer.appendChild(playerListContainer);
+                playerCards.appendChild(seeDetailsbtn)
+                //article.playerCards(article) getting closer. I need to now when clicked make it 
+                //show up on the other side and re render with full details
+                
             });    
         
     } catch (err) {
         console.error('Uh oh, trouble rendering players!', err);
     }
 };
-/*
-<h3>${player.name}</h3>
-<span>${player.breed}</span>
-<span>${player.status}</span> */
-/*
-const renderSinglePlayer = (onePlayer) => {
-    const stats = getElementById("single-player-stats");
-    stats.innerHTML = " "
-    const article2 = document.createElement("article");
 
-    article2.innerHTML = `<h3>${player.id}</h3>
-        <h3>${player.name}</h3>
-        <span>${player.breed}</span>
-        <span>${player.status}</span>
-        <img src="${player.imageUrl}"/>
-        `;
-    stats.appendChild(article2);      
-}
-    stats.addEventListener("player-details", renderSinglePlayer);
-*/
+
 /**
  * It renders a form to the DOM, and when the form is submitted, it adds a new player to the database,
  * fetches all players from the database, and renders them to the DOM.
@@ -197,3 +208,24 @@ const init = async () => {
 }
 
 init();
+
+/*
+<h3>${player.name}</h3>
+<span>${player.breed}</span>
+<span>${player.status}</span> */
+/*
+const renderSinglePlayer = (onePlayer) => {
+    const stats = getElementById("single-player-stats");
+    stats.innerHTML = " "
+    const article2 = document.createElement("article");
+
+    article2.innerHTML = `<h3>${player.id}</h3>
+        <h3>${player.name}</h3>
+        <span>${player.breed}</span>
+        <span>${player.status}</span>
+        <img src="${player.imageUrl}"/>
+        `;
+    stats.appendChild(article2);      
+}
+    stats.addEventListener("player-details", renderSinglePlayer);
+*/
