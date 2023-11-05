@@ -11,6 +11,8 @@ Work with your team to plan and implement using GitHub Project
 You will be provided with the GitHub link to any existing work that has been done 
 Overall, your job is to build out a functional client side. Request data from the API, then render that data on the front end! The front-end should allow the user to: 
 
+
+# puppybowl-2 branch changed and merged
 view the roster
 see a player's details
 add players to the roster
