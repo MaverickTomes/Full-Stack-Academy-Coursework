@@ -137,8 +137,7 @@ function singlePlayerDetails (playersid) {
 const renderAllPlayers = (playerList) => {
     
     try {
-        const seeDetailsContainer= document.getElementById("single-player-stats") //this is the article inside the div that flexboxed
-        //to the other side --->>see other screenshot
+        const seeDetailsContainer= document.getElementById("single-player-stats") 
         const playerListContainer = document.getElementById("all-players-container");
         playerListContainer.innerHTML = " "
         playerList.forEach((player) => {
@@ -146,7 +145,7 @@ const renderAllPlayers = (playerList) => {
             const deleteBtn = document.createElement("button");
             const seeDetailsbtn = document.createElement("button");
             seeDetailsbtn.innerText = "See Details"
-            deleteBtn.innerText ="delete"
+            deleteBtn.innerText ="Delete"
             seeDetailsbtn.addEventListener("click", async() => {
                 if (playerCards.style.display === "div") {
                     playerCards.style.display = "all-players-containter";
@@ -166,19 +165,21 @@ const renderAllPlayers = (playerList) => {
                 const article = document.createElement("article");
                 console.log(player);
                 article.innerHTML = 
-                `
-                 
-                <img src="${player.imageUrl}"/> 
-                
-                `
-                //<button id="player-details">See Details</button>
+                `<img src="${player.imageUrl}"/> `
+
+                playerListContainer.appendChild(article);
+                playerCards.appendChild(seeDetailsbtn);
+                playerCards.appendChild(deleteBtn);
+                playerContainer.appendChild(playerCards)
+
+                /*
                 playerListContainer.appendChild(article);   
                 playerCards.appendChild(deleteBtn);  
                 playerListContainer.appendChild(playerCards);  
-                seeDetailsContainer.appendChild(playerListContainer);
-                playerCards.appendChild(seeDetailsbtn)
-                //article.playerCards(article) getting closer. I need to now when clicked make it 
-                //show up on the other side and re render with full details
+                seeDetailsContainer.appendChild(playerListContainer); ///----> don't know where to append it to for the otherside?
+                playerCards.appendChild(seeDetailsbtn);
+                */
+                
                 
             });    
         
