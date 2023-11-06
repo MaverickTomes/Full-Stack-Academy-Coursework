@@ -147,7 +147,7 @@ const renderAllPlayers = (playerList) => {
             seeDetailsbtn.innerText = "See Details"
             deleteBtn.innerText ="Delete"
             seeDetailsbtn.addEventListener("click", async() => {
-                if (playerCards.style.display === "div") {
+                if (playerCards.style.display === "div") { 
                     playerCards.style.display = "all-players-containter";
                 } else {
                     playerCards.innerHTML = 
