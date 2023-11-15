@@ -5,6 +5,7 @@ import AllBooks from './components/AllBooks'
 import SingleBook from './components/SingleBook'
 import Login from './components/Login'
 import Register from './components/Register'
+import Account from './components/Account'
 
 
 
@@ -12,7 +13,7 @@ import Register from './components/Register'
 
 
 function App() {
-  // const [token, setToken] = useState(null)
+  const [token, setToken] = useState(null)
 
 
   return (
@@ -22,8 +23,9 @@ function App() {
      <h6>"Find a book, Check it out fast"</h6>
      <div className='nav-link'>
         <Link to='/'>Home</Link>
-        <Link to='/login'>Login</Link>
-        <Link to='/register'>Register</Link>
+        <Link to='/login/'>Login</Link>
+        <Link to='/register/'>Register</Link>
+        <Link to='/myAccount'>My Account</Link>
 
       </div>
 
@@ -33,7 +35,8 @@ function App() {
       <Route path='/singlebook/:bookId' element={<SingleBook/>}/>
       <Route path='/login/' element={<Login/>}/>
       <Route path='/register/' element={<Register/>}/>
-    
+      <Route path='/myAccount/' element={<Account/>}/>
+    {/* pass setToken as a prop to register */}
 
     </Routes>
 

@@ -61,6 +61,21 @@ a {
   max-width: 200px;
   max-height: 200px;
 }
+.books-container > li > button {
+  margin-right: 10px;
+  /* display: flex;
+  justify-content: end;
+  flex-direction: center; */
+
+}
+button {
+  color: rgb(0, 195, 255);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: bold;
+  background-color: black;
+  box-shadow: 1px,1px,1px,1px;
+  margin-left: 5px;
+}
 
 .single-book > img {
   max-width: 500px;
