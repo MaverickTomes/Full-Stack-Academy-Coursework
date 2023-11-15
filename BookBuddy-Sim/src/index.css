@@ -15,10 +15,16 @@ h1 {
   text-shadow: 2px 2px purple;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+h5 {
+  font-size: 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgb(0, 195, 255);
+  text-shadow: 1.5px 1.5px rgb(0, 0, 0);
+}
 
 h6 {
   font-size: 15px;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: rgb(0, 195, 255);
   text-shadow:1px 1px rgb(10, 10, 10);
   

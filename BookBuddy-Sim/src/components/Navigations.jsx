@@ -3,6 +3,7 @@
 import { Link, Route, Routes } from 'react-router-dom'
 import AllBooks from './AllBooks'
 import SingleBook from './SingleBook'
+import Login from './components/Login'
 
 
 
@@ -23,6 +24,7 @@ function Navigation() {
         <Routes>
             <Route path='/' element={<AllBooks/>}/>
             <Route path='/singlebook/:bookId' element={<SingleBook/>}/>
+            <Route path='/login/' element={<Login/>}/>
         </Routes>
   
 

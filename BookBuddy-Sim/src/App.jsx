@@ -3,6 +3,9 @@ import bookLogo from './assets/books.png'
 import { Link, Route, Routes } from 'react-router-dom'
 import AllBooks from './components/AllBooks'
 import SingleBook from './components/SingleBook'
+import Login from './components/Login'
+import Register from './components/Register'
+
 
 
 
@@ -28,6 +31,9 @@ function App() {
     <Routes>
       <Route path='/' element={<AllBooks/>}/>
       <Route path='/singlebook/:bookId' element={<SingleBook/>}/>
+      <Route path='/login/' element={<Login/>}/>
+      <Route path='/register/' element={<Register/>}/>
+    
 
     </Routes>
 
