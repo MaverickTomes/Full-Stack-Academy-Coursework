@@ -20,10 +20,10 @@ export default function Register({ setToken }) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            //add firstname and lastname
+          
             firstname: firstname,
             lastname: lastname,
-            username: username,
+            email: username,
             password: password,
           }),
         }

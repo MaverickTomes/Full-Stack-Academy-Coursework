@@ -20,7 +20,7 @@ export default function Login({ setToken }) {
           },
           body: JSON.stringify({
            
-            username: username,
+            email: username,
             password: password,
           }),
         }

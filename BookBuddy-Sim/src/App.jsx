@@ -33,8 +33,8 @@ function App() {
     <Routes>
       <Route path='/' element={<AllBooks/>}/>
       <Route path='/singlebook/:bookId' element={<SingleBook/>}/>
-      <Route path='/login/' element={<Login/>}/>
-      <Route path='/register/' element={<Register/>}/>
+      <Route path='/login/' element={<Login token={token} setToken={setToken}/>}/>
+      <Route path='/register/' element={<Register token={token} setToken={setToken}/>}/>
       <Route path='/myAccount/' element={<Account/>}/>
     {/* pass setToken as a prop to register */}
 
