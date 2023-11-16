@@ -4,13 +4,15 @@ You may consider conditionally rendering a 'Checkout' button for logged in users
 
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function SingleBook() {
   
   const [ book, setBook ] = useState({})
 
   const { bookId } = useParams()
+
+  const navigate = useNavigate
 
 
   useEffect(() => {
@@ -23,6 +25,8 @@ function SingleBook() {
   async function fetchSingleBook() {
     let API ='https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/'
 
+  
+
     try {
       const { data } = await axios.get(`${API}/books/${bookId}`)
 
@@ -34,20 +38,21 @@ function SingleBook() {
   }
 
 
-// console.log(book)
   
   
   return <div className='book-details'>
     { 
+    
       book.id ?
         <div className='single-book'>
           <h2>#{book.id}</h2>
           <h3>{book.title}</h3>
           <h3>{book.author}</h3>
+          <button onClick={() => {navigate(`/myAccount`)}}>Checkout</button>
           <h4>{book.description}</h4>
           <img src={book.coverimage}/>
           <h3>{book.available}</h3>
-          <button>Available</button>
+          
         </div>
       :
         <h1>No book was found with id: "{bookId}".  Try again.</h1>
