@@ -23,9 +23,9 @@ function App() {
      <h6>"Find a book, Check it out fast"</h6>
      <div className='nav-link'>
         <Link to='/'>Home</Link>
-        <Link to='/login/'>Login</Link>
-        <Link to='/register/'>Register</Link>
-        <Link to='/myAccount'>My Account</Link>
+        {!token && <Link to='/login/'>Login</Link>}
+        {!token && <Link to='/register/'>Register</Link>}
+        {token && <Link to='/myAccount'>My Account</Link>}
 
       </div>
 
