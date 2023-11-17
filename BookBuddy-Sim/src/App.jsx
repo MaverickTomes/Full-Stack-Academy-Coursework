@@ -32,7 +32,7 @@ function App() {
 
     <Routes>
       <Route path='/' element={<AllBooks/>}/>
-      <Route path='/singlebook/:bookId' element={<SingleBook/>}/>
+      <Route path='/singlebook/:bookId' element={<SingleBook token={token}/>}/>
       <Route path='/login/' element={<Login token={token} setToken={setToken}/>}/>
       <Route path='/register/' element={<Register token={token} setToken={setToken}/>}/>
       <Route path='/myAccount/' element={<Account/>}/>

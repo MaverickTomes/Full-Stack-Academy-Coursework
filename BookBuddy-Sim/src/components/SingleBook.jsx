@@ -6,13 +6,13 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useNavigate, useParams } from 'react-router-dom'
 
-function SingleBook() {
+function SingleBook({ token }) {
   
   const [ book, setBook ] = useState({})
 
   const { bookId } = useParams()
 
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
 
   useEffect(() => {
@@ -37,7 +37,29 @@ function SingleBook() {
     }
   }
 
-
+  async function reserveBook() { 
+    try {
+      const response = await fetch(
+        "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/:Id",
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            available: false, })
+          
+        }
+      );
+      const result = await response.json();
+      setSuccessMessage(result.message);
+    } 
+    
+    catch (error) {
+      setError(error.message);
+    }
+  }
   
   
   return <div className='book-details'>
@@ -48,10 +70,12 @@ function SingleBook() {
           <h2>#{book.id}</h2>
           <h3>{book.title}</h3>
           <h3>{book.author}</h3>
-          <button onClick={() => {navigate(`/myAccount`)}}>Checkout</button>
+          {token && <button onClick={() => {reserveBook()}}>Reserve Now</button>}
           <h4>{book.description}</h4>
           <img src={book.coverimage}/>
           <h3>{book.available}</h3>
+          <h3>{book.available}</h3>
+          
           
         </div>
       :
