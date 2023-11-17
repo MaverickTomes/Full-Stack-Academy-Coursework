@@ -46,7 +46,6 @@ async function fetchAccount() {
             return (   
           <div>       
               <li key={books.id}></li>
-              <h3>#{books.id}</h3>
               <h3>{books.title}</h3>
               <img src={books.coverimage} />
           </div>
