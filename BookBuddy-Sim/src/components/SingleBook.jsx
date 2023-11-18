@@ -9,7 +9,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 function SingleBook({ token }) {
   
   const [ book, setBook ] = useState({})
-
   const { bookId } = useParams()
 
   const navigate = useNavigate()
@@ -40,12 +39,12 @@ function SingleBook({ token }) {
   async function reserveBook() { 
     try {
       const response = await fetch(
-        "https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/:Id",
+        `https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books/${bookId}`, 
         {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            "Authorization": `Bearer ${token}`,
           },
           body: JSON.stringify({
             available: false, })
@@ -53,11 +52,12 @@ function SingleBook({ token }) {
         }
       );
       const result = await response.json();
-      setSuccessMessage(result.message);
-    } 
-    
-    catch (error) {
-      setError(error.message);
+      console.log(result)
+
+      fetchSingleBook()
+
+    }  catch (error) {
+      console.error(error.message);
     }
   }
   
@@ -65,7 +65,7 @@ function SingleBook({ token }) {
   return <div className='book-details'>
     { 
     
-      book.id ?
+      (book.id) ? (
         <div className='single-book'>
           <h2>#{book.id}</h2>
           <h3>{book.title}</h3>
@@ -77,9 +77,9 @@ function SingleBook({ token }) {
           <h3>{book.available}</h3>
           
           
-        </div>
+        </div> )
       :
-        <h1>No book was found with id: "{bookId}".  Try again.</h1>
+        (<h1>No book was found with id: "{bookId}".  Try again.</h1>)
 
     }
   </div>

@@ -13,7 +13,7 @@ import Account from './components/Account'
 
 
 function App() {
-  const [token, setToken] = useState(null)
+  const [ token, setToken ] = useState(null)
 
 
   return (
@@ -35,7 +35,7 @@ function App() {
       <Route path='/singlebook/:bookId' element={<SingleBook token={token}/>}/>
       <Route path='/login/' element={<Login token={token} setToken={setToken}/>}/>
       <Route path='/register/' element={<Register token={token} setToken={setToken}/>}/>
-      <Route path='/myAccount/' element={<Account/>}/>
+      <Route path='/myAccount/' element={<Account token={token}/>}/>
     {/* pass setToken as a prop to register */}
 
     </Routes>
