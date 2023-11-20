@@ -29,7 +29,7 @@ export default function Register({ setToken }) {
         }
       );
       const result = await response.json();
-      console.log("Signup Result: ", result);
+      //console.log("Signup Result: ", result);
       setToken(result.token);
       setSuccessMessage(result.message);
       setUsername("");
@@ -41,10 +41,10 @@ export default function Register({ setToken }) {
 
   return (
     <div>
-      <h2>Signup</h2>
+      <h2>Register:</h2>
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form className="register" onSubmit={handleSubmit}>
 
         <label>
           Firstname:{" "}
@@ -86,60 +86,3 @@ export default function Register({ setToken }) {
   );
 }
 
-
-
-
-{/* </form>
-// import { useState } from "react"
-
-// function Register() { //add your prop in here..
-//   const [firstname, setFirstname] = useState("")
-//   const [lastname, setLastname] = useState("")
-//   const [username, setUsername] = useState("")
-//   const [password, setPassword] = useState("")
-
-
-//   async function regRequest() {
-//     let API = await fetch ("https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register/", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type" : "application/jason",
-//     },
-//     body: JSON.stringify({
-//       firstname: firstname,
-//       lastname: lastname,
-//       username: username,
-//       password: password,
-//     })
-//   })
-// //call setToken 
-// }
-
-//   return(
-//     <>
-//     <h5>Please Register Below:</h5>
-//     <form id="register">
-        
-//         <label>First Name:</label>
-//         <input type="text" id="firstname" required onChange={(evt) => setFirstname(evt.target.value)} />
-//         <label>Last Name</label>
-//         <input type="text" id="lastname" onChange={(evt) => setLastname(evt.target.value)}/>
-//         <label>Username:</label>
-//         <input type="text" id="username" required onChange={(evt) => setUsername(evt.target.value)}/>
-//         <label>Password:</label>
-//         <input type="text " id="password" required onChange={(evt) => setPassword(evt.target.value)}/>
-//         <button onSubmit={() => regRequest()}>Register</button>
-
-//     </form>
-    
-    
-//     </>
-//   )
-// }
-// export default Register
-
-
-
-
-
-//"https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/register/" */}

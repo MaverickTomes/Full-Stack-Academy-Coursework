@@ -47,7 +47,7 @@ function Account ({ token }){
          },
       });
       const result = await response.json();
-      console.log(result);
+     // console.log(result);
       setMessage(result);
       fetchUser()
       
@@ -56,13 +56,13 @@ function Account ({ token }){
     }
 
 return (
-  <div>
+  <div className="account">
     <h1>My Account Information</h1>
     <h2>{name} {lastname}</h2>
     <h3>{email}</h3>
         <div>
-          <h2>My Reserved Books</h2>
-          {books.length <= 0 && <p>no books</p>}
+          <h2>My Reserved Books:</h2>
+          {books.length <= 0 && <p>**NO BOOKS RESERVED**</p>}
             {(message) ? (<p>Returned book successfully!</p>) : (<p></p>)}
           <ul>
               {books.map((book) => 
@@ -77,7 +77,6 @@ return (
   </div>
   )
 }
-//books ? if no books reserved :
 export default Account
 
 

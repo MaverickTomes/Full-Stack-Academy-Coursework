@@ -26,7 +26,7 @@ export default function Login({ setToken }) {
         }
       );
       const result = await response.json();
-      console.log("Signup Result: ", result);
+     // console.log("Signup Result: ", result);
       setToken(result.token);
       setSuccessMessage(result.message);
       setUsername("");
@@ -38,10 +38,10 @@ export default function Login({ setToken }) {
 
   return (
     <div>
-      <h2>Login</h2>
+      <h2>Login:</h2>
       {successMessage && <p>{successMessage}</p>}
       {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
+      <form className="login" onSubmit={handleSubmit}>
 
         <label>
           Username:{" "}

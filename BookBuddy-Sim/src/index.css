@@ -15,6 +15,24 @@ h1 {
   text-shadow: 2px 2px purple;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 40px;
+  text-decoration: underline;
+  color: rgb(0, 195, 255);
+  text-shadow: 2px 2px purple;
+} */
+
+/* h4 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 50px;
+  text-decoration: underline;
+  text-align: center;
+  color: rgb(0, 195, 255);
+  text-shadow: 2.5px 2.5px rgb(0, 0, 0);
+} */
+
 h5 {
   font-size: 25px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -30,6 +48,37 @@ h6 {
   
 }
 
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.register {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: solid 2px black;
+  margin-right: 790px;
+  box-shadow: 1px 1px 2px 2px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.login {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  border: solid 2px black;
+  margin-right: 1300px;
+  box-shadow: 1px 1px 2px 2px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.account {
+  margin-left: 10px;
+}
 
 .nav-link {
   display: flex;

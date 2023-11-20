@@ -25,7 +25,7 @@ books in the library's catalog. Fetch the book data from the provided API.
       const { data: response } = await Axios.get(`${API}/books`)
 
       setBooks(response.books)
-      console.log(response)
+     // console.log(response)
 
     } catch (err) {
       console.error(err.message)
@@ -33,7 +33,11 @@ books in the library's catalog. Fetch the book data from the provided API.
   }
 
   
-  return <ul className='books-container'>
+  return (
+  <>
+      <h4>Welcome! Please Register To Check Out A Book.</h4>
+
+  <ul className='books-container'> 
     {
       books.length ? 
         books.map(books => {
@@ -49,6 +53,7 @@ books in the library's catalog. Fetch the book data from the provided API.
     }
 
   </ul>
+  </>)
 }
 
  export default AllBooks
