@@ -53,7 +53,7 @@ async function attachActivitiesToRoutines(routines) {
   const binds = routines.map((_, index) => `$${index + 1}`).join(', ');
   const routineIds = routines.map(routine => routine.id);
   if (!routineIds?.length) return [];
-  
+
   try {
     // get the activities, JOIN with routine_activities (so we can get a routineId), and only those that have those routine ids on the routine_activities join
     const { rows: activities } = await client.query(`
