@@ -10,72 +10,34 @@ const {
   getPostById,
 } = require('../db');
 
-postsRouter.get('/', async (req, res, next) => {
-  try {
-    const allPosts = await getAllPosts();
+postsRouter.post('/', requireUser, async (req, res, next) => {
+  const { title, content, tags = [] } = req.body;
 
-    const posts = allPosts.filter(post => {
-      // the post is active, doesn't matter who it belongs to
-      if (post.active) {
-        return true;
+  const postData = {
+    authorId: req.user.id,
+    title,
+    content,
+  };
+  try {
+    const post = await createPost(postData);
+
+    if(post){
+      if(tags.length > 0){
+        await createTags(tags);
+        await addTagsToPost(post.id, tags);
       }
-    
-      // the post is not active, but it belogs to the current user
-      if (req.user && post.author.id === req.user.id) {
-        return true;
-      }
-    
-      // none of the above are true
-      return false;
-    });
-  
-    res.send({
-      posts
-    });
+      res.send(post);
+    } else {
+      next({
+        name: 'PostCreateError',
+        message: 'Error creating post, try again.',
+      });
+    }
   } catch ({ name, message }) {
     next({ name, message });
   }
 });
 
-
-//***BELOW POST ROUTER FIXED. TAGS ISSUE ADDRESSED */
-postsRouter.post('/', requireUser, async (req, res, next) => {
-  const { title, content = "", tags = [] } = req.body;
- 
-  const postData = {};
- 
-  try {
-     postData.authorId = req.user.id;
-     postData.title = title;
-     postData.content = content;
- 
-     // Add tags to the postData
-     postData.tags = [];
-     for (let tagName of tags) {
-        const tag = await tag.findOne({ where: { name: tagName } });
- 
-        if (tag) {
-          postData.tags.push(tag);
-        } else {
-          const newTag = await tag.create({ name: tagName });
-          postData.tags.push(newTag);
-        }
-     }
- 
-     const post = await createPost(postData);
- 
-     if (post) {
-       res.send(post);
-     } else {
-       next({
-         name: 'PostCreationError',
-         message: 'There was an error creating your post. Please try again.'
-       })
-     }
-  } catch ({ name, message }) {
-     next({ name, message });
-  }
- });
 
 postsRouter.patch('/:postId', requireUser, async (req, res, next) => {
   const { postId } = req.params;
