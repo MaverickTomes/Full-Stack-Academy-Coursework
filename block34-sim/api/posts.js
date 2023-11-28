@@ -11,27 +11,25 @@ const {
 } = require('../db');
 
 postsRouter.post('/', requireUser, async (req, res, next) => {
-  const { title, content, tags = [] } = req.body;
+  const { tags, title, content = "" } = req.body;
 
-  const postData = {
-    authorId: req.user.id,
-    title,
-    content,
-  };
+  const postData = {};
+
   try {
+    postData.authorId = req.user.id;
+    postData.title = title;
+    postData.content = content;
+    postData.tags = tags;
+
     const post = await createPost(postData);
 
-    if(post){
-      if(tags.length > 0){
-        await createTags(tags);
-        await addTagsToPost(post.id, tags);
-      }
+    if (post) {
       res.send(post);
     } else {
       next({
-        name: 'PostCreateError',
-        message: 'Error creating post, try again.',
-      });
+        name: 'PostCreationError',
+        message: 'There was an error creating your post. Please try again.'
+      })
     }
   } catch ({ name, message }) {
     next({ name, message });
