@@ -5,7 +5,10 @@ const express = require('express');
 const server = express();
 
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 server.use(bodyParser.json());
+server.use(cors());
 
 const morgan = require('morgan');
 server.use(morgan('dev'));

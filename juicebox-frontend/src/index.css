@@ -1,0 +1,63 @@
+body {
+  font-family: Georgia, serif;
+  background-color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 55px;
+  color: rgb(255, 0, 0);
+  text-shadow: 2px 2px rgb(250, 246, 3);
+  font-family: fantasy;
+  text-align: center;
+}
+
+h2 {
+  font-family: fantasy;
+  font-size: 40px;
+  text-decoration: underline;
+  color: rgb(255, 0, 0);
+  text-shadow: 2px 2px rgb(250, 246, 3);
+  text-align: center;
+  margin-top: 5%;
+}
+
+.nav-link {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(255, 0, 0);
+  box-shadow: 1px 1px 3px 3px;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 10px;
+  text-align: center;
+  font-size: 25px; 
+}
+
+a {
+  color: rgb(250, 246, 3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
+
+.login > form {
+  text-align: center;
+
+  
+}
+
+.login > label {
+  color: red;
+  font-weight: bold;
+  text-decoration: underline;
+  padding: 5px;
+}
+
+.login > button {
+  background-color: rgb(250, 246, 3);
+  color: red;
+  font-weight: bold;
+}
