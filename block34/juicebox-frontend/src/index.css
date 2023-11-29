@@ -61,3 +61,13 @@ a {
   color: red;
   font-weight: bold;
 }
+
+.users > ul {
+  font-size: 20px;
+  font-style: oblique;
+  font-weight: bolder;
+  text-align: center;
+  margin-right: 35px;
+  color: rgb(250, 246, 3);
+  list-style-type: none;
+}
